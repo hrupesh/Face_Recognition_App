@@ -3,6 +3,9 @@ from .models import User , Image
 from django.contrib.auth.models import User as UserA
 from django.contrib.auth import authenticate
 from rest_framework import exceptions
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.http import JsonResponse
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -62,3 +65,7 @@ class LoginSerializer(serializers.Serializer):
             raise exceptions.ValidationError(msg)
         return data
 
+class checkimageserializer(serializers.Serializer):
+    img = serializers.ImageField()
+    print(img)
+    
